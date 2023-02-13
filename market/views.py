@@ -11,9 +11,11 @@ from html2image import Html2Image
 
 # Create your views here.
 
+market_static_path = '/static/market/marketImages/'
+advertisement_static_path = '/static/advertisement/advertisementImages/'
 
-market_hti = Html2Image(output_path=str(settings.BASE_DIR)+'/static/market/marketImages/')
-advertisement_hti = Html2Image(output_path=str(settings.BASE_DIR)+'/static/advertisement/advertisementImages/')
+market_hti = Html2Image(output_path=str(settings.BASE_DIR) + market_static_path)
+advertisement_hti = Html2Image(output_path=str(settings.BASE_DIR) + advertisement_static_path)
 
 
 
@@ -52,6 +54,7 @@ class MarketImage(APIView):
         logo_byte, background_byte = convert_image_to_bytes(logo), convert_image_to_bytes(background_image)
         template_dir = 'MarketTemplate'
         market_templates_list = os.listdir(str(settings.BASE_DIR) + '/templates/' + template_dir)
+        market_images_list = []
         for temp in market_templates_list:
             print(temp)
             template_path = template_dir+f"/{temp}"
@@ -61,4 +64,5 @@ class MarketImage(APIView):
 
             html = template.render(context)
             save_images(html, f'{temp.split(".")[0]}.png', type=market_hti)
-        return JsonResponse({"success": True}, status=200)
+            market_images_list.append('http://127.0.0.1:8000'+market_static_path+f'{temp.split(".")[0]}.png')
+        return JsonResponse({"images": market_images_list}, status=200)
