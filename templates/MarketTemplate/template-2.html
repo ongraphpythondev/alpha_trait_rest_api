@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+      <title>Template 1</title>
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <style>
+         body{
+         font-family: 'Open Sans', sans-serif;
+         }
+         h2{
+         font-size: 34px;
+         font-weight: 300;
+         }
+         h3{
+         font-size: 36px;
+         font-weight: 700;
+         }
+         .page-wrapper{
+         border-radius: 10px;
+         border: 1px solid #ddd;
+         max-width: 1000px;
+         margin: 10px auto 10px;
+         }
+         .banner-wrapper{
+          position: relative;
+         }
+         .banner-wrapper:before {
+        position: absolute;
+    width: 80%;
+    height: 25px;
+    background: {{head_color}};
+    content: '';
+    z-index: 99;
+    left: 10%;
+    top: -5px;
+    border-radius: 20px 20px 0 0;
+  }
+.banner-wrapper:after {
+    position: absolute;
+    bottom: -5px;
+    width: 80%;
+    height: 25px;
+    background: {{foot_color}};
+    content: '';
+    z-index: 99;
+    left: 10%;
+    border-radius: 0 0 30px 30px;
+}
+.banner-wrapper img{
+      max-width: calc(100% + 30px);
+    margin: 20px 0 20px -15px;
+         }
+         .container{
+         max-width: 100%;
+         }
+         .logo-img{
+      max-width: 100px;
+    margin-bottom: 30px;
+         }
+         header{
+         padding: 20px 0;
+         }
+         
+         .main-content-wrapper{
+         padding: 40px 0;
+         }
+         .teach-btn-style{
+         border-radius: 30px;
+         border: 1px solid #111;
+         display: inline-flex;
+         padding: 10px 20px;
+         font-size: 14px;
+         margin-top: 20px;
+         align-items: center;
+         }
+         .teach-btn-style span{
+         width: 18px;
+         display: inline-flex;
+         background: #6c6c6c;
+         border-radius: 100%;
+         height: 18px;
+         margin-left: 5px;
+         justify-content: center;
+         }
+         .teach-btn-style span svg{
+         width: 10px;
+         fill: #fff;
+         }
+
+         @media screen and (max-width: 720px), screen and (max-height: 100px) {
+        .page-wrapper {
+          margin: 20px 10px 10px;
+        }
+        header {
+    padding: 4px 0;
+}
+.container {
+
+    padding: 0 5px;
+}
+         h2{
+         font-size: 14px;
+             margin-bottom: 4px;
+      
+         }
+         h3{
+         font-size: 16px;
+             margin-bottom: 4px;
+         
+         }
+         .logo-img {
+    max-width: 100%;
+    margin-bottom: 0px;
+}
+.banner-wrapper:before, .banner-wrapper:after{
+  display: none;
+}
+.banner-wrapper img {
+    width: 100%;
+    margin: 0;
+    height: 44px;
+    display: inline-block;
+    object-fit: cover;
+}
+.main-content-wrapper {
+    padding: 15px 0 0;
+}
+.teach-btn-style {
+    border-radius: 25px;
+  
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-top: 5px;
+
+}
+    }
+      </style>
+   </head>
+   <body>
+      <div class="page-wrapper">
+         <header>
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12 col-3 text-center">
+                     <img src="data:image/jpg;base64,{{logo}}" class="logo-img" />
+                  </div>
+                  <div class="col-md-12 col-9">
+                    <div class="banner-wrapper">
+                      <img src="data:image/jpg;base64,{{bg_image}}" />
+                    </div>
+                  </div>
+                  <div class="col-md-12 ">
+                    <div class="text-center main-content-wrapper">
+                      <h2 style="color: {{frame_color}}">{{text}}</h2>
+                      <div class="teach-btn-style">
+                         Teach Me 
+                         <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                               <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                               <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
+                            </svg>
+                         </span>
+                      </div>
+                    </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+         
+         
+      </div>
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   </body>
+</html>
