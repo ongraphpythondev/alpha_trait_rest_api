@@ -48,21 +48,46 @@ class MarketImage(APIView):
             text = request.POST['text']
             frame_color = request.POST['frame_color']
             foot_color = request.POST['foot_color']
+            template_number = request.POST['template_number']
+            font = request.POST['font_name']
+            width = request.POST['width']
+            height = request.POST['height']
         except Exception as e:
+            print(e)
             return JsonResponse({}, status=400)
 
         logo_byte, background_byte = convert_image_to_bytes(logo), convert_image_to_bytes(background_image)
+
         template_dir = 'MarketTemplate'
-        market_templates_list = os.listdir(str(settings.BASE_DIR) + '/templates/' + template_dir)
-        market_images_list = []
-        for temp in market_templates_list:
-            print(temp)
-            template_path = template_dir+f"/{temp}"
+        temp = f"template-{template_number}.html"
+        template_path = template_dir+f"/{temp}"
+    
+        try:
             template = get_template(template_path)
+        except Exception:
+            return JsonResponse({"message": "Template doesn't exists"}, status=400)
 
-            context = {"logo": logo_byte, "bg_image": background_byte, "text": text, "head_color":head_color, "foot_color": foot_color, "frame_color": frame_color}
+        google_font_name = "+".join(font.strip().split(" ")) 
 
-            html = template.render(context)
-            save_images(html, f'{temp.split(".")[0]}.png', type=market_hti)
-            market_images_list.append('http://127.0.0.1:8000'+market_static_path+f'{temp.split(".")[0]}.png')
+        context = {
+            "logo": logo_byte, 
+            "bg_image": background_byte, 
+            "text": text, 
+            "head_color":head_color, 
+            "foot_color": foot_color, 
+            "frame_color": frame_color, 
+            "font_family": font, 
+            "google_font_name": google_font_name.title(),
+            "height1": height,
+            "width1": width
+        }
+
+        html = template.render(context)
+        market_images_list = []
+        # print(html)
+        print(height)
+        save_images(html, f'{temp.split(".")[0]}.png', type=market_hti)
+
+        market_images_list.append('http://127.0.0.1:8000'+market_static_path+f'{temp.split(".")[0]}.png')
+
         return JsonResponse({"images": market_images_list}, status=200)
